@@ -1,22 +1,11 @@
-/*
- * Bitmap - Image generation utility
- * Copyright (C) 2020 Jose Fernando Lopez Fernandez
- * 
- * This program is free software: you can redistribute it
- * and/or modify it under the terms of the GNU General
- * Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your
- * option) any later version.
- * 
- * This program is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the
- * implied warranty of MERCHANTABILITY or FITNESS FOR A
- * PARTICULAR PURPOSE.  See the GNU General Public License
- * for more details.
- * 
- * You should have received a copy of the GNU General Public
- * License along with this program.  If not, see
- * <https://www.gnu.org/licenses/>.
+/**
+ * This file contains the structure definitions required to
+ * generate a bitmap file.
+ *
+ * @author Jose Fernando Lopez Fernandez
+ * @copyright GNU General Public License v. 3
+ *
+ * @file bitmap.h
  *
  */
 
@@ -29,7 +18,7 @@
  * @struct bitmap_file_header_t
  *
  */
-typedef struct bitmap_file_header_t {
+typedef struct {
     
     /**
      * The magic number identifying the generated output as
@@ -78,17 +67,95 @@ typedef struct bitmap_file_header_t {
  * header.
  *
  */
-typedef struct bitmap_info_header_t {
+typedef struct {
+
+    /**
+     * The size of this structure.
+     *
+     */
     int32_t struct_size;
+
+    /**
+     * The width of the bitmap image, in pixels.
+     *
+     */
     int32_t width;
+
+    /**
+     * The height of the bitmap image, in pixels.
+     *
+     */
     int32_t height;
+
+    /**
+     * Number of planes for the target device.
+     *
+     * @details
+     * According to the Windows documentation, this value
+     * represents the number of planes for the target
+     * device. However, it must also always be set to 1, so
+     * the value of this element is questionable.
+     *
+     */
     int16_t planes;
+
+    /**
+     * The number of bits per pixel.
+     *
+     * @details This value effectively determines the number
+     * of possible colors in the bitmap, as calculated by
+     * (bit_count * R) + (bit_count * G) + (bit_count * B).
+     * The current version of this application always uses a
+     * bit count of 24 per pixel.
+     *
+     */
     int16_t bit_count;
+
+    /**
+     * The type of compression for this bitmap.
+     *
+     * @details While bitmaps can actually be JPEG or PNG
+     * encoded, the current version of this application
+     * simply uses plain, uncompressed bitmaps.
+     *
+     */
     int32_t compression;
+
+    /**
+     * The size of the actual bitmap image data.
+     *
+     * @details Unlike the size element in the bitmap file
+     * header struct, this element defines the size of the
+     * actual image data in this file.
+     *
+     */
     int32_t image_size;
+
+    /**
+     * The image's horizontal resolution in pixels-per-meter
+     * (PPM).
+     *
+     */
     int32_t x_ppm;
+
+    /**
+     * The image's vertical resolution in pixels-per-meter
+     * (PPM).
+     *
+     */
     int32_t y_ppm;
+
+    /**
+     * The number of color indexes used by the bitmap image.
+     *
+     */
     int32_t color_indexes_used;
+
+    /**
+     * The number of color indexes that are absolutely
+     * required for displaying the image.
+     *
+     */
     int32_t color_indexes_reqd;
 } bitmap_info_header_t;
 

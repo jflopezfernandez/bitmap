@@ -1,3 +1,8 @@
+# Global (Tags)
+GPATH
+GRTAGS
+GTAGS
+
 # Doxygen
 docs/html
 
