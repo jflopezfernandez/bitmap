@@ -1,0 +1,12 @@
+# Doxygen
+docs/html
+
+# Compiler Output
+*.o
+
+# Executables
+bitmap
+
+# Bitmaps
+**/*.bmp
+
