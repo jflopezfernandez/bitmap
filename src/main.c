@@ -1,5 +1,4 @@
 /*
- * @copyright {
  * Bitmap - Image generation utility
  * Copyright (C) 2020 Jose Fernando Lopez Fernandez
  * 
@@ -18,7 +17,6 @@
  * You should have received a copy of the GNU General Public
  * License along with this program.  If not, see
  * <https://www.gnu.org/licenses/>.
- * }
  *
  */
 

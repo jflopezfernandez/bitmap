@@ -27,7 +27,6 @@
  * Structure describing the bitmap file header.
  *
  * @struct bitmap_file_header_t
- * 
  *
  */
 typedef struct bitmap_file_header_t {
@@ -42,10 +41,35 @@ typedef struct bitmap_file_header_t {
      *
      */
     char magic_number[2];
+
+    /**
+     * The total size, in bytes, of the generated bitmap
+     * file.
+     *
+     */
     int32_t file_size;
+
+    /**
+     * As per the Windows documentation, this value is
+     * reserved and should always be zero.
+     *
+     */
     int16_t reserved_1;
+
+    /**
+     * As per the Windows documentation, this value is
+     * reserved and should always be set to zero.
+     *
+     */
     int16_t reserved_2;
+
+    /**
+     * The size of the offset, in bytes, from the start of
+     * the file to the beginning of the actual image data.
+     *
+     */
     int32_t offset_bits;
+
 } bitmap_file_header_t;
 
 /**
